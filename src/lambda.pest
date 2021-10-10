@@ -1,0 +1,10 @@
+
+input = _{ SOI ~ (expression)* ~ EOI }
+WHITESPACE = _{ " " | "\t" | "\r" | "\n" }
+
+expression = _{ (name)+ | function | application }
+name = { ASCII_ALPHA_LOWER }
+function = {"λ" ~ params ~ "." ~ body}
+application = { "(" ~ expression ~ ")" ~ expression }
+body = { expression }
+params = { (name)* }
